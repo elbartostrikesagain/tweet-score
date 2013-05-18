@@ -19,7 +19,7 @@
 //auto width
 $(document).ready(function() {
   function resizeInput() {
-    $(this).attr('rows', $(this).val().length);
+    $(this).attr('size', $(this).val().length);
     console.log("woof");
     //$(this).​​​​​​attr('rows', $(this).val().length)​​​​​​;
   }
