@@ -61,4 +61,5 @@ group :development, :test do
   gem 'sqlite3'
   gem 'pry'
   gem 'pry-nav'
+  gem 'heroku_san'
 end
