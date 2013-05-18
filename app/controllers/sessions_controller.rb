@@ -13,7 +13,6 @@ class SessionsController < ApplicationController
   private
 
   def user_params
-    binding.pry
     params = ActionController::Parameters.new(env["omniauth.auth"])
     params.permit({:info => [:name]}, {:credentials => [:token, :secret]}, :uid, :oauth_token, :oauth_secret, :provider)
   end
