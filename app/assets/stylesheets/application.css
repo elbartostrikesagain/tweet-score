@@ -29,8 +29,31 @@
 .team-row {
   display: inline;
 }
+.team-column {
+  width: 50%;
+  text-align: center;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.team-column div.ui-input-text{
+  margin: auto;
+  width: 15%;
+}
+.team-column input.ui-input-text{
+  font-size: 30px;
+  text-align: center;
+}
 
 input.score {
  display: block;
  width: auto;
+}
+
+#send-tweet {
+  width: 20%;
+  margin: auto;
 }

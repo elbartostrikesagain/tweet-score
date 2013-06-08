@@ -18,15 +18,60 @@
 
 //auto width
 $(document).ready(function() {
-  function resizeInput() {
-    $(this).attr('size', $(this).val().length);
-    console.log("woof");
-    //$(this).​​​​​​attr('rows', $(this).val().length)​​​​​​;
-  }
+  $("#scores-area").hide();
+  $("#nav-button").click(function(){
+    toggleSetup();
+  });
 
-  $('input.score')
-    // event handler
-    .keyup(resizeInput)
-    // resize on page load
-    .each(resizeInput);
+  $(".raise-score").click(function(){
+    var score = $(".team-column input.ui-input-text")[0];
+    score.value = parseInt(score.value) + 1;
+  });
+
+   $(".lower-score").click(function(){
+    var score = $(".team-column input.ui-input-text")[0];
+    score.value = parseInt(score.value) - 1;
+  });
+
+  $("#send-tweet").click(function(){
+    var url = "/tweet"
+    jQuery.ajax({
+      type: 'POST',
+      dataType: 'html',
+      url: url,
+      data: {'id': ref_id},
+
+      success: function(data) {
+        var form = jQuery('#pre_reg_lightbox_form');
+        form.html(data);
+
+        form.dialog({
+          minWidth: 400,
+          width: 450,
+          modal: true,
+          height: 600,
+          minHeight: 400,
+          overlay: { opacity: 0.7, background: "black"}
+        })
+      }
+    });
+  });
+
 });
+
+function toggleSetup() {
+  var setup = $("#setup-area");
+  var scores = $("#scores-area");
+  var button = $("#nav-button span.ui-btn-text");
+  if (setup.is(":hidden")){
+    scores.hide();
+    setup.show();
+    button.text("Scores");
+  }
+  else{
+    setup.hide();
+    scores.show();
+    button.text("Setup");
+  }
+  
+}

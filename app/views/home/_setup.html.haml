@@ -1,8 +1,10 @@
-%form
-  %fieldset{"data-collapsed" => "false", "data-content-theme" => "d", "data-role" => "collapsible", "data-theme" => "a"}
-    %legend Setup
-    %h3 Teams
-    = render partial: "autocomplete", locals: {url: "/teams", placeholder: 'Team Name'}
-    = render partial: "autocomplete", locals: {url: "/teams", placeholder: "Team Name"}
-    %h3 Hash Tags
-    = render partial: "autocomplete", locals: {url: "/hash_tags", placeholder: "#hashtag"}
+#setup-area
+  %form
+    %fieldset{"data-collapsed" => "false", "data-content-theme" => "d", "data-role" => "collapsible", "data-theme" => "a"}
+      / data-role => collapsible
+      %legend Setup
+      %h3 Teams
+      = render partial: "autocomplete", locals: {url: "/teams", placeholder: 'Team Name'}
+      = render partial: "autocomplete", locals: {url: "/teams", placeholder: "Team Name"}
+      %h3 Hash Tags
+      = render partial: "autocomplete", locals: {url: "/hash_tags", placeholder: "#hashtag"}
