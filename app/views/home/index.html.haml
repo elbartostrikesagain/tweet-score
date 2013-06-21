@@ -1,18 +1,21 @@
 = render partial: "setup"
 #scores-area
   .team-column.left
-    %h3 Team 1
-    %input#number.ui-input-text.ui-body-c.ui-corner-all.ui-shadow-inset{:name => "number", :type => "number", :value => "0"}/
-    = render partial: "score_adjust_buttons"
+    %h3#team-1-name Team 1
+    %input#number.ui-input-text.ui-body-c.ui-corner-all.ui-shadow-inset.team-1{:name => "number", :type => "number", :value => "0"}/
+    = render partial: "score_adjust_buttons", locals: {team_id: "team-1"}
 
   .team-column.right    
-    %h3 Team 2
-    %input#number.ui-input-text.ui-body-c.ui-corner-all.ui-shadow-inset{:name => "number", :type => "number", :value => "0"}/
-    = render partial: "score_adjust_buttons"
+    %h3#team-2-name Team 2
+    %input#number.ui-input-text.ui-body-c.ui-corner-all.ui-shadow-inset.team-2{:name => "number", :type => "number", :value => "0"}/
+    = render partial: "score_adjust_buttons", locals: {team_id: "team-2"}
 
   %br
   %h3 Additional Tweet Content
-  %input#tweet{"data-clear-btn" => "true", :name => "tweet", :type => "text", :value => ""}/
+  %input#additional-tweet-content{"data-clear-btn" => "true", :name => "tweet", :type => "text", :value => ""}/
+
+  .ui-body.ui-body-d.ui-corner-all
+    %p#tweet-sample
 
   #send-tweet
     %button Tweet

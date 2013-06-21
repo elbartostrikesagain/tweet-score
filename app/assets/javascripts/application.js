@@ -24,40 +24,56 @@ $(document).ready(function() {
   });
 
   $(".raise-score").click(function(){
-    var score = $(".team-column input.ui-input-text")[0];
+    var teamId = $(this).attr("id");
+    var score = $("input." + teamId)[0];
     score.value = parseInt(score.value) + 1;
+    updateTweet();
   });
 
    $(".lower-score").click(function(){
-    var score = $(".team-column input.ui-input-text")[0];
+    var teamId = $(this).attr("id");
+    var score = $("input." + teamId)[0];
     score.value = parseInt(score.value) - 1;
+    updateTweet();
   });
 
-  $("#send-tweet").click(function(){
-    var url = "/tweet"
-    jQuery.ajax({
-      type: 'POST',
-      dataType: 'html',
-      url: url,
-      data: {'id': ref_id},
+  // $("#send-tweet").click(function(){
+  //   var url = "/tweet"
+  //   jQuery.ajax({
+  //     type: 'POST',
+  //     dataType: 'html',
+  //     url: url,
+  //     data: {'id': ref_id},
 
-      success: function(data) {
-        var form = jQuery('#pre_reg_lightbox_form');
-        form.html(data);
+  //     success: function(data) {
+  //       var form = jQuery('#pre_reg_lightbox_form');
+  //       form.html(data);
 
-        form.dialog({
-          minWidth: 400,
-          width: 450,
-          modal: true,
-          height: 600,
-          minHeight: 400,
-          overlay: { opacity: 0.7, background: "black"}
-        })
-      }
-    });
+  //       form.dialog({
+  //         minWidth: 400,
+  //         width: 450,
+  //         modal: true,
+  //         height: 600,
+  //         minHeight: 400,
+  //         overlay: { opacity: 0.7, background: "black"}
+  //       })
+  //     }
+  //   });
+  // });
+
+  $('.team-name').change(function() {
+    var id = $(this).attr('id');
+    var teamName = $(this).find("input").val() || id;
+    $("#" + id + "-name").text(teamName);
+    updateTweet();
   });
 
 });
+
+function updateTweet(){
+  var tweet = [$('#team-1-name').text(), $('input.team-1').val(), $('#team-2-name').text(), $('input.team-2').val(), $('#additional-tweet-content').val()].join(' ') + ' ' + $('#hashtags input').val();
+  $('#tweet-sample').text(tweet);
+}
 
 function toggleSetup() {
   var setup = $("#setup-area");
